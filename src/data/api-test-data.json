@@ -1,0 +1,10 @@
+﻿{
+  "client": {
+    "name": "Thor QA Automation Client"
+  },
+  "order": {
+    "bookId": 1,
+    "customerName": "Thor Automation Customer",
+    "updatedCustomerName": "Thor Automation Customer Updated"
+  }
+}
