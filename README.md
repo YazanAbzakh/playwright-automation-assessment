@@ -1,6 +1,6 @@
 ﻿# Playwright Web and API Automation Framework
 
-[![Playwright Tests](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME/actions/workflows/playwright.yml/badge.svg)](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME/actions/workflows/playwright.yml)
+[![Playwright Tests](https://github.com/YazanAbzakh/playwright-automation-assessment/actions/workflows/playwright.yml/badge.svg)](https://github.com/YazanAbzakh/playwright-automation-assessment/actions/workflows/playwright.yml)
 
 ## 1. Project Description
 
@@ -31,7 +31,7 @@ Playwright installs and manages its compatible Firefox browser build.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME.git
+   git clone https://github.com/YazanAbzakh/playwright-automation-assessment.git
    ```
 
 2. Navigate to the project folder:
@@ -268,3 +268,5 @@ The workflow runs:
 - HTML test reporting
 - GitHub Actions continuous integration
 - Daily scheduled execution at 3:00 AM Amman time
+
+
