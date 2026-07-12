@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version: '24.13.1'
           cache: npm
 
       - name: Install project dependencies
@@ -46,4 +46,5 @@ jobs:
           name: playwright-html-report
           path: reports/html/
           retention-days: 30
+
 
