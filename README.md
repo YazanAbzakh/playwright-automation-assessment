@@ -37,7 +37,7 @@ Playwright installs and manages its compatible Firefox browser build.
 2. Navigate to the project folder:
 
    ```bash
-   cd playwright-automation
+   cd playwright-automation-assessment
    ```
 
 3. Install the exact dependency versions from `package-lock.json`:
@@ -101,7 +101,7 @@ npm run typecheck
 The framework separates test scenarios, page interactions, API communication, fixtures, test data, and reusable utilities.
 
 ```text
-playwright-automation/
+playwright-automation-assessment/
 ├── .github/
 │   └── workflows/
 │       └── playwright.yml
@@ -128,6 +128,8 @@ playwright-automation/
 │       ├── checkout.spec.ts
 │       ├── login.spec.ts
 │       └── products.spec.ts
+├── reports/
+│   └── .gitkeep
 ├── global-setup.ts
 ├── global-teardown.ts
 ├── playwright.config.ts
@@ -268,5 +270,4 @@ The workflow runs:
 - HTML test reporting
 - GitHub Actions continuous integration
 - Daily scheduled execution at 3:00 AM Amman time
-
 
