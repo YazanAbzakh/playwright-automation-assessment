@@ -41,10 +41,11 @@ jobs:
 
       - name: Upload Playwright HTML report
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-html-report
           path: reports/html/
           retention-days: 30
+
 
 
