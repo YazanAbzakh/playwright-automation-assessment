@@ -1,6 +1,7 @@
 ﻿node_modules/
 
-reports/
+reports/*
+!reports/.gitkeep
 playwright-report/
 test-results/
 blob-report/
