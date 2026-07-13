@@ -96,46 +96,55 @@ npm run test:headed
 npm run typecheck
 ```
 
+### Reusable Authenticated State
+
+The UI browser projects depend on a dedicated authentication setup project. It logs in once and saves the reusable session to `playwright/.auth/user.json`.
+
+Products and checkout tests reuse this authenticated state. Login tests explicitly use an empty storage state so valid and invalid authentication behavior remains independently testable.
+
+The generated authentication file is excluded from Git because it may contain sensitive session data.
+
 ## 5. Architecture and Project Structure
 
 The framework separates test scenarios, page interactions, API communication, fixtures, test data, and reusable utilities.
 
 ```text
 playwright-automation-assessment/
-├── .github/
-│   └── workflows/
-│       └── playwright.yml
-├── src/
-│   ├── api/
-│   │   └── SimpleBooksApi.ts
-│   ├── data/
-│   │   ├── api-test-data.json
-│   │   └── ui-test-data.json
-│   ├── fixtures/
-│   │   └── testFixtures.ts
-│   ├── pages/
-│   │   ├── CartPage.ts
-│   │   ├── CheckoutCompletePage.ts
-│   │   ├── CheckoutPage.ts
-│   │   ├── LoginPage.ts
-│   │   └── ProductsPage.ts
-│   └── utils/
-│       └── randomData.ts
-├── tests/
-│   ├── api/
-│   │   └── orders.spec.ts
-│   └── ui/
-│       ├── checkout.spec.ts
-│       ├── login.spec.ts
-│       └── products.spec.ts
-├── reports/
-│   └── .gitkeep
-├── global-setup.ts
-├── global-teardown.ts
-├── playwright.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md
+â”œâ”€â”€ .github/
+â”‚   â””â”€â”€ workflows/
+â”‚       â””â”€â”€ playwright.yml
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ api/
+â”‚   â”‚   â””â”€â”€ SimpleBooksApi.ts
+â”‚   â”œâ”€â”€ data/
+â”‚   â”‚   â”œâ”€â”€ api-test-data.json
+â”‚   â”‚   â””â”€â”€ ui-test-data.json
+â”‚   â”œâ”€â”€ fixtures/
+â”‚   â”‚   â””â”€â”€ testFixtures.ts
+â”‚   â”œâ”€â”€ pages/
+â”‚   â”‚   â”œâ”€â”€ CartPage.ts
+â”‚   â”‚   â”œâ”€â”€ CheckoutCompletePage.ts
+â”‚   â”‚   â”œâ”€â”€ CheckoutPage.ts
+â”‚   â”‚   â”œâ”€â”€ LoginPage.ts
+â”‚   â”‚   â””â”€â”€ ProductsPage.ts
+â”‚   â””â”€â”€ utils/
+â”‚       â””â”€â”€ randomData.ts
+â”œâ”€â”€ tests/
+â”‚   â”œâ”€â”€ auth.setup.ts
+â”‚   â”œâ”€â”€ api/
+â”‚   â”‚   â””â”€â”€ orders.spec.ts
+â”‚   â””â”€â”€ ui/
+â”‚       â”œâ”€â”€ checkout.spec.ts
+â”‚       â”œâ”€â”€ login.spec.ts
+â”‚       â””â”€â”€ products.spec.ts
+â”œâ”€â”€ reports/
+â”‚   â””â”€â”€ .gitkeep
+â”œâ”€â”€ global-setup.ts
+â”œâ”€â”€ global-teardown.ts
+â”œâ”€â”€ playwright.config.ts
+â”œâ”€â”€ tsconfig.json
+â”œâ”€â”€ package.json
+â””â”€â”€ README.md
 ```
 
 ### Architectural Pattern
@@ -157,6 +166,7 @@ External JSON files separate stable test values from test behavior. Dynamic valu
 | `src/fixtures` | Custom Playwright fixture definitions |
 | `src/data` | External JSON data for UI and API tests |
 | `src/utils` | Shared utilities such as unique email generation |
+| `tests/auth.setup.ts` | Creates the reusable authenticated browser state |
 | `tests/ui` | SauceDemo UI test scenarios and assertions |
 | `tests/api` | Simple Books API lifecycle tests and assertions |
 | `reports/html` | Generated Playwright HTML report |
@@ -191,7 +201,7 @@ All UI scenarios execute in both Google Chrome and Firefox.
 The API scenarios execute serially because they intentionally represent one connected order lifecycle:
 
 ```text
-Create → Retrieve → Update → Delete
+Create â†’ Retrieve â†’ Update â†’ Delete
 ```
 
 ## 8. Viewing Reports
@@ -258,6 +268,7 @@ The workflow runs:
 - Playwright with TypeScript
 - Page Object Model
 - Custom Playwright fixtures
+- Global authentication setup with reusable `storageState`
 - External JSON test data
 - Data-driven invalid-login execution
 - Dynamic selection of the two most expensive products

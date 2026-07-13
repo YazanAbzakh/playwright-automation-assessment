@@ -1,15 +1,10 @@
-﻿import testData from '../../src/data/ui-test-data.json';
-import { expect, test } from '../../src/fixtures/testFixtures';
+﻿import { expect, test } from '../../src/fixtures/testFixtures';
 
 test.describe('SauceDemo Products', () => {
   test(
     'TC_UI_003 - Verify Products Sorted in Descending Alphabetical Order',
-    async ({ loginPage, productsPage }) => {
-      await loginPage.navigate();
-      await loginPage.login(
-        testData.validUser.username,
-        testData.validUser.password
-      );
+    async ({ productsPage }) => {
+      await productsPage.navigate();
 
       await expect(productsPage.pageTitle).toHaveText('Products');
 

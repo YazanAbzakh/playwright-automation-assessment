@@ -27,6 +27,10 @@ export class ProductsPage {
     this.cartLink = page.locator('[data-test="shopping-cart-link"]');
   }
 
+  async navigate(): Promise<void> {
+    await this.page.goto('/inventory.html');
+  }
+
   async sortByNameDescending(): Promise<void> {
     await this.sortDropdown.selectOption('za');
   }
