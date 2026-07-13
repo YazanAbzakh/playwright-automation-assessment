@@ -6,17 +6,12 @@ test.describe('SauceDemo Checkout', () => {
     'TC_UI_004 - End-to-End Checkout Flow',
     async ({
       page,
-      loginPage,
       productsPage,
       cartPage,
       checkoutPage,
       checkoutCompletePage
     }) => {
-      await loginPage.navigate();
-      await loginPage.login(
-        testData.validUser.username,
-        testData.validUser.password
-      );
+      await productsPage.navigate();
 
       await expect(productsPage.pageTitle).toHaveText('Products');
 
@@ -42,6 +37,7 @@ test.describe('SauceDemo Checkout', () => {
       await expect(cartPage.cartItems).toHaveCount(2);
 
       const cartItemNames = await cartPage.getCartItemNames();
+
       const expectedProductNames = twoMostExpensiveProducts.map(
         (product) => product.name
       );

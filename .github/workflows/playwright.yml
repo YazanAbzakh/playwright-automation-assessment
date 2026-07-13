@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   schedule:
     - cron: '0 3 * * *'
       timezone: 'Asia/Amman'
@@ -46,6 +49,3 @@ jobs:
           name: playwright-html-report
           path: reports/html/
           retention-days: 30
-
-
-
