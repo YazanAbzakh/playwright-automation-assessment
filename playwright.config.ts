@@ -37,7 +37,10 @@ export default defineConfig({
       use: {
         browserName: 'firefox',
         baseURL: 'https://www.saucedemo.com',
-        viewport: null
+        viewport: null,
+        launchOptions: {
+          args: ['--kiosk']
+        }
       }
     },
     {
